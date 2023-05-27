@@ -22,6 +22,7 @@ use curve25519_dalek::{
 };
 use generic_array::GenericArray;
 use std::{convert::TryInto, ptr, str, sync::atomic};
+use serde_derive::{Deserialize, Serialize};
 use zeroize::{Zeroize, Zeroizing};
 
 lazy_static::lazy_static! {
@@ -70,7 +71,7 @@ pub type SK = Scalar;
 ///   recovering x coordinate of ed25519 point from its y coordinate. Every time you call
 ///   `.x_coord()` or `from_coords()`, it takes y coordinate and runs `xrecover(y)` underhood. Keep
 ///   in mind that `xrecover` is quite expensive operation.
-#[derive(Debug, PartialEq, Eq, Clone)]
+#[derive(Debug, PartialEq, Eq, Clone,Serialize,Deserialize)]
 pub enum Ed25519 {}
 
 #[derive(Clone, Debug)]
